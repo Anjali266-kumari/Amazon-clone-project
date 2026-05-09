@@ -1,0 +1,160 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
+  background-color: #030712;
+  background-image:
+    radial-gradient(circle at 15% 85%, #0e3b5c 0%, transparent 45%),
+    radial-gradient(circle at 85% 95%, #071b36 0%, transparent 45%),
+    radial-gradient(circle at 80% 5%, #061121 0%, transparent 40%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.quiz-section {
+  height: 50%;
+  background: transparent;
+  padding: 30px 40px;
+  width: 90%;
+  max-width: 800px;
+}
+
+.quiz h2.question {
+  color: #ffffff;
+  margin-bottom: 25px;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.quiz hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 25px 0;
+}
+
+.quiz li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease;
+}
+
+.quiz li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.quiz input[type="radio"] {
+  cursor: pointer;
+  margin-right: 15px;
+  transform: scale(1.3);
+  accent-color: #0ea5e9;
+}
+
+.quiz label {
+  font-size: 20px;
+  color: #e2e8f0;
+  cursor: pointer;
+  width: 100%;
+}
+
+.btn {
+  text-align: center;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.btn button {
+  background-color: #ffffff;
+  color: #030712;
+  border: none;
+  padding: 15px 40px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.btn button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Score Result Styles */
+.result {
+  text-align: center;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result h2 {
+  font-size: 42px;
+  color: #38bdf8;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.result p {
+  font-size: 22px;
+  color: #e2e8f0;
+  margin-bottom: 40px;
+}
+
+.reload-button {
+  background-color: #0ea5e9;
+  color: #ffffff;
+  border: none;
+  padding: 16px 45px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+}
+
+.reload-button:hover {
+  background-color: #0284c7;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(14, 165, 233, 0.5);
+}
