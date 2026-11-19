@@ -212,9 +212,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (addCartBtn) {
     addCartBtn.addEventListener("click", () => {
-      const currentTotal = getCartCount();
-      const updatedTotal = currentTotal + currentQty;
-      setCartCount(updatedTotal);
+      // Add item into shared cart storage
+      if (typeof addToCart === "function") {
+        addToCart(product.id, currentQty);
+      } else {
+        const currentTotal = getCartCount();
+        setCartCount(currentTotal + currentQty);
+      }
 
       addCartBtn.innerHTML = '<i class="fa-solid fa-check"></i> Added to Cart!';
       addCartBtn.style.background = "#57e389";
@@ -222,9 +226,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (alertQty) alertQty.textContent = currentQty;
       if (cartAlert) {
         cartAlert.style.display = "flex";
-        setTimeout(() => {
-          cartAlert.style.display = "none";
-        }, 3500);
       }
 
       setTimeout(() => {

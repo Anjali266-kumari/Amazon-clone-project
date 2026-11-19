@@ -54,24 +54,23 @@ for (const item of scrollContainers) {
 }
 
 // ================= Persistent Cart Count =================
-function getCartCount() {
-  const saved = localStorage.getItem("amazonCartCount");
-  return saved ? parseInt(saved, 10) : 0;
-}
-
-function updateCartBadge() {
-  const count = getCartCount();
-  const badges = document.querySelectorAll(".cart-count");
-  badges.forEach((b) => {
-    b.textContent = count;
-  });
-}
-
 // Update cart badge on load
 document.addEventListener("DOMContentLoaded", () => {
-  updateCartBadge();
+  if (typeof updateAllCartBadges === "function") {
+    updateAllCartBadges();
+  }
 });
-updateCartBadge();
+if (typeof updateAllCartBadges === "function") {
+  updateAllCartBadges();
+}
+
+// Nav cart button click listener
+const navCartBtn = document.getElementById("nav-cart-btn");
+if (navCartBtn) {
+  navCartBtn.addEventListener("click", () => {
+    window.location.href = "cart.html";
+  });
+}
 
 // ================= Navigate to Product Details Page =================
 function navigateToProduct(productId) {

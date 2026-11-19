@@ -595,7 +595,7 @@
 
 .cart-alert {
   display: none;
-  align-items: center;
+  flex-direction: column;
   gap: 8px;
   background: #007600;
   color: #ffffff;
@@ -604,6 +604,32 @@
   font-size: 13px;
   font-weight: 600;
   animation: fadeInAlert 0.3s ease;
+}
+
+.cart-alert .alert-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-alert-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: #ffffff;
+  color: #0f1111;
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: background 0.15s;
+}
+
+.cart-alert-link:hover {
+  background: #f7fafa;
+  color: #c7511f;
 }
 
 @keyframes fadeInAlert {

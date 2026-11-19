@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amazon.in Shopping Cart</title>
+  <link rel="stylesheet" href="clone.css" />
+  <link rel="stylesheet" href="cart.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="clone.html" title="Amazon Home">
+      <img
+        src="https://www.shutterstock.com/image-vector/amazon-logo-editorial-icon-isolated-600nw-2333488123.jpg"
+        style="height: auto"
+        width="100"
+        alt="logo"
+      />
+    </a>
+
+    <div class="nav-location">
+      <i class="fa-solid fa-location-dot" style="color: aliceblue"></i>
+      <div>
+        <p>Deliver to</p>
+        <h1>New Delhi 110001</h1>
+      </div>
+    </div>
+
+    <div class="nav-search">
+      <div class="nav-category">
+        <p>All <i class="fa-solid fa-caret-down"></i></p>
+      </div>
+      <input
+        type="text"
+        class="input"
+        placeholder="Search Amazon"
+        autocomplete="off"
+      />
+      <i class="fa-solid fa-magnifying-glass nav-search-icon"></i>
+    </div>
+
+    <div class="nav-lang">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT_YyCuo6I2MX671acpoIAsXUvdReaugX5Uw&s"
+        width="25px"
+        alt="flag"
+      />
+      <p>EN</p>
+      <i class="fa-solid fa-caret-down"></i>
+    </div>
+    <div class="nav-text">
+      <p>Hello, Sign in</p>
+      <h1>Account & Lists<i class="fa-solid fa-caret-down" width="8px"></i></h1>
+    </div>
+    <div class="nav-text">
+      <p>Returns</p>
+      <h1>& Orders</h1>
+    </div>
+    <div class="nav-cart" id="nav-cart-btn" onclick="location.href='cart.html'" title="Your Shopping Cart">
+      <div class="cart-icon-wrapper">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+      <p>Cart</p>
+    </div>
+  </nav>
+
+  <!-- Sub Navigation Bar -->
+  <div class="nav-bottom">
+    <a href="clone.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i> Continue Shopping
+    </a>
+    <div>
+      <i class="fa-solid fa-bars" width="25px"></i>
+      <p>All</p>
+    </div>
+    <p>Today's Deals</p>
+    <p>Customer Service</p>
+    <p>Registry</p>
+    <p>Gift Cards</p>
+    <p>Sell</p>
+    <p>Amazon Pay</p>
+  </div>
+
+  <!-- Shopping Cart Main Content -->
+  <main class="cart-page-wrapper">
+    <div class="cart-layout-grid">
+
+      <!-- Left Column: Shopping Cart Items List -->
+      <section class="cart-main-container">
+        <!-- Active Cart View -->
+        <div id="active-cart-view" class="cart-card">
+          <div class="cart-header">
+            <div>
+              <h1 class="cart-title">Shopping Cart</h1>
+              <button type="button" class="deselect-btn" id="deselect-all-btn">Deselect all items</button>
+            </div>
+            <div class="cart-header-price-col">Price</div>
+          </div>
+
+          <hr class="cart-divider" />
+
+          <!-- Dynamic Items List -->
+          <div id="cart-items-list" class="cart-items-list">
+            <!-- Items injected by cart.js -->
+          </div>
+
+          <!-- Empty Cart Notice (hidden by default) -->
+          <div id="empty-cart-state" class="empty-cart-box" style="display: none;">
+            <div class="empty-cart-icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <div class="empty-cart-info">
+              <h2>Your Amazon Cart is empty.</h2>
+              <p>Your shopping cart is waiting. Give it purpose – fill it with groceries, clothing, household supplies, electronics and more.</p>
+              <p>Explore today's top deals and best-selling items.</p>
+              <a href="clone.html" class="btn-shop-deals">Continue Shopping</a>
+            </div>
+          </div>
+
+          <hr class="cart-divider" />
+
+          <!-- Subtotal in main container -->
+          <div class="cart-subtotal-footer" id="cart-subtotal-footer">
+            Subtotal (<span id="footer-count">0</span> items): <strong class="subtotal-val" id="footer-amount">₹0.00</strong>
+          </div>
+        </div>
+
+        <div class="cart-disclaimer">
+          The price and availability of items at Amazon.in are subject to change. The shopping cart is a temporary place to store a list of your items and reflects each item's most recent price. Do you have a promotional code or gift card? We'll ask you to enter your claim code when it's time to pay.
+        </div>
+      </section>
+
+      <!-- Right Column: Checkout Summary -->
+      <aside class="cart-sidebar">
+        <div class="checkout-summary-card">
+          <div class="free-delivery-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            <div>
+              <span class="delivery-status">Your order qualifies for FREE Delivery!</span>
+              <p class="delivery-hint">Choose FREE Delivery option at checkout.</p>
+            </div>
+          </div>
+
+          <div class="checkout-subtotal-row">
+            Subtotal (<span id="sidebar-count">0</span> items):
+            <strong class="checkout-price" id="sidebar-amount">₹0.00</strong>
+          </div>
+
+          <div class="gift-option-wrap">
+            <input type="checkbox" id="gift-checkbox" />
+            <label for="gift-checkbox">This order contains a gift</label>
+          </div>
+
+          <button type="button" class="btn-proceed-checkout" id="btn-proceed-checkout">
+            Proceed to Buy
+          </button>
+
+          <div class="emi-dropdown-box">
+            <span>EMI Available <i class="fa-solid fa-angle-down"></i></span>
+          </div>
+
+          <div class="security-guarantee">
+            <i class="fa-solid fa-lock"></i>
+            <span>100% Safe & Secure Payments</span>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Recommendations Section: Customers Also Bought -->
+    <section class="cart-recommendations-section">
+      <h2>Recommended based on your shopping trends</h2>
+      <div class="recommendations-grid" id="recommendations-grid">
+        <!-- Injected dynamically by cart.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Checkout Confirmation Modal -->
+  <div id="checkout-modal" class="checkout-modal-overlay">
+    <div class="checkout-modal-box">
+      <button class="checkout-modal-close" id="modal-close-checkout">&times;</button>
+      <div class="checkout-modal-header">
+        <i class="fa-solid fa-circle-check modal-success-icon"></i>
+        <h3>Order Placed Successfully!</h3>
+      </div>
+      <div class="checkout-modal-body">
+        <p>Thank you for shopping on <strong>Amazon.in</strong>!</p>
+        <p class="order-id">Order ID: <strong>#403-<span id="modal-order-num">7829145</span>-829104</strong></p>
+        <div class="order-summary-box">
+          <div class="summary-line">
+            <span>Items Ordered:</span>
+            <strong id="modal-items-count">0</strong>
+          </div>
+          <div class="summary-line">
+            <span>Order Total:</span>
+            <strong id="modal-order-total" class="green-price">₹0.00</strong>
+          </div>
+          <div class="summary-line">
+            <span>Delivery:</span>
+            <span>FREE Express Delivery (Tomorrow, 8 AM - 12 PM)</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-return-home" id="btn-return-home">Back to Homepage</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="bottom" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</div>
+    <div class="bottom-content">
+      <div class="content">
+        <div class="heading">Get to Know Us</div>
+        <ul>
+          <li>Careers</li>
+          <li>Blog</li>
+          <li>About Amazon</li>
+          <li>Investor Relations</li>
+          <li>Amazon Devices</li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="heading">Make Money with Us</div>
+        <ul>
+          <li>Sell products on Amazon</li>
+          <li>Sell on Amazon Business</li>
+          <li>Become an Affiliate</li>
+          <li>Advertise Your Products</li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="heading">Amazon Payment Products</div>
+        <ul>
+          <li>Amazon Business Card</li>
+          <li>Shop with Points</li>
+          <li>Reload Your Balance</li>
+          <li>Amazon Currency Converter</li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="heading">Let Us Help You</div>
+        <ul>
+          <li>Your Account</li>
+          <li>Your Orders</li>
+          <li>Shipping Rates & Policies</li>
+          <li>Returns & Replacements</li>
+          <li>Help</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <a href="#">Conditions of Use</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Your Ads Privacy Choices</a>
+      <p>© 1996-2026, Amazon.com, Inc. or its affiliates</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="products-data.js"></script>
+  <script src="cart.js"></script>
+</body>
+</html>

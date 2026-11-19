@@ -921,3 +921,86 @@ const productsData = {
     ]
   }
 };
+
+// ================= Shared Cart Operations =================
+function getCartItems() {
+  try {
+    const raw = localStorage.getItem("amazonCartItems");
+    if (!raw) {
+      // Migrate legacy count if exists
+      const legacyCount = parseInt(localStorage.getItem("amazonCartCount"), 10);
+      if (legacyCount > 0) {
+        const initial = [{ id: "phone", qty: legacyCount }];
+        localStorage.setItem("amazonCartItems", JSON.stringify(initial));
+        return initial;
+      }
+      return [];
+    }
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveCartItems(items) {
+  try {
+    localStorage.setItem("amazonCartItems", JSON.stringify(items));
+  } catch (e) {
+    console.error("Failed to save cart items", e);
+  }
+  updateAllCartBadges();
+}
+
+function getCartCount() {
+  const items = getCartItems();
+  return items.reduce((total, item) => total + (parseInt(item.qty, 10) || 1), 0);
+}
+
+function addToCart(productId, qty = 1) {
+  const items = getCartItems();
+  const existing = items.find((item) => item.id === productId);
+  if (existing) {
+    existing.qty = (parseInt(existing.qty, 10) || 0) + (parseInt(qty, 10) || 1);
+  } else {
+    items.push({ id: productId, qty: parseInt(qty, 10) || 1 });
+  }
+  saveCartItems(items);
+}
+
+function updateCartItemQty(productId, qty) {
+  let items = getCartItems();
+  const numQty = parseInt(qty, 10);
+  if (isNaN(numQty) || numQty <= 0) {
+    items = items.filter((item) => item.id !== productId);
+  } else {
+    const target = items.find((item) => item.id === productId);
+    if (target) {
+      target.qty = Math.min(numQty, 10);
+    }
+  }
+  saveCartItems(items);
+}
+
+function removeFromCart(productId) {
+  let items = getCartItems();
+  items = items.filter((item) => item.id !== productId);
+  saveCartItems(items);
+}
+
+function updateAllCartBadges() {
+  const count = getCartCount();
+  try {
+    localStorage.setItem("amazonCartCount", count.toString());
+  } catch (e) {}
+  const badges = document.querySelectorAll(".cart-count");
+  badges.forEach((b) => {
+    b.textContent = count;
+  });
+}
+
+// Automatically sync badges on script load and DOM ready
+if (typeof document !== "undefined") {
+  document.addEventListener("DOMContentLoaded", updateAllCartBadges);
+  updateAllCartBadges();
+}

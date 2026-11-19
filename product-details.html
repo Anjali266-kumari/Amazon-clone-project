@@ -61,7 +61,7 @@
       <p>Returns</p>
       <h1>& Orders</h1>
     </div>
-    <div class="nav-cart" id="nav-cart-btn" onclick="location.href='clone.html'">
+    <div class="nav-cart" id="nav-cart-btn" onclick="location.href='cart.html'" title="View Shopping Cart">
       <div class="cart-icon-wrapper">
         <i class="fa-solid fa-cart-shopping"></i>
         <span class="cart-count" id="cart-count">0</span>
@@ -244,7 +244,10 @@
           </div>
 
           <div id="cart-alert" class="cart-alert">
-            <i class="fa-solid fa-circle-check"></i> Added <span id="alert-qty">1</span> item(s) to Cart!
+            <div class="alert-content">
+              <i class="fa-solid fa-circle-check"></i> Added <span id="alert-qty">1</span> item(s) to Cart!
+            </div>
+            <a href="cart.html" class="cart-alert-link">Go to Cart <i class="fa-solid fa-arrow-right"></i></a>
           </div>
         </div>
       </aside>
