@@ -1,3 +1,4 @@
+// ================= Slider Navigation =================
 const imgs = document.querySelectorAll(".header-slider ul img");
 const previousbtn = document.querySelector(".control-prev");
 const nextbtn = document.querySelector(".control-next");
@@ -10,28 +11,37 @@ function changeSlide() {
   }
   imgs[n].style.display = "block";
 }
-changeSlide();
 
-previousbtn.addEventListener("click", (e) => {
-  if (n > 0) {
-    n--;
-  } else {
-    n = imgs.length - 1;
-  }
+if (imgs.length > 0) {
   changeSlide();
-});
+}
 
-nextbtn.addEventListener("click", (e) => {
-  if (n < imgs.length - 1) {
-    n++;
-  } else {
-    n = 0;
-  }
-  changeSlide();
-});
+if (previousbtn) {
+  previousbtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (n > 0) {
+      n--;
+    } else {
+      n = imgs.length - 1;
+    }
+    changeSlide();
+  });
+}
 
+if (nextbtn) {
+  nextbtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (n < imgs.length - 1) {
+      n++;
+    } else {
+      n = 0;
+    }
+    changeSlide();
+  });
+}
+
+// Horizontal scroll for products slider
 const scrollContainers = document.querySelectorAll(".products");
-
 for (const item of scrollContainers) {
   item.addEventListener(
     "wheel",
@@ -39,6 +49,51 @@ for (const item of scrollContainers) {
       event.preventDefault();
       item.scrollLeft += event.deltaY;
     },
-    { passive: false },
+    { passive: false }
   );
 }
+
+// ================= Persistent Cart Count =================
+function getCartCount() {
+  const saved = localStorage.getItem("amazonCartCount");
+  return saved ? parseInt(saved, 10) : 0;
+}
+
+function updateCartBadge() {
+  const count = getCartCount();
+  const badges = document.querySelectorAll(".cart-count");
+  badges.forEach((b) => {
+    b.textContent = count;
+  });
+}
+
+// Update cart badge on load
+document.addEventListener("DOMContentLoaded", () => {
+  updateCartBadge();
+});
+updateCartBadge();
+
+// ================= Navigate to Product Details Page =================
+function navigateToProduct(productId) {
+  if (!productId) productId = "phone";
+  window.location.href = `product-details.html?id=${encodeURIComponent(productId)}`;
+}
+
+// Attach click listeners to all box-columns
+const boxColumns = document.querySelectorAll(".box-column");
+boxColumns.forEach((box) => {
+  box.addEventListener("click", (e) => {
+    // If user clicked the link directly, let default link action or navigate
+    const productId = box.getAttribute("data-product") || "phone";
+    navigateToProduct(productId);
+  });
+});
+
+// Attach click listeners to all product slider images
+const sliderImages = document.querySelectorAll(".product-slider .products img");
+sliderImages.forEach((img) => {
+  img.addEventListener("click", () => {
+    const productId = img.getAttribute("data-product") || "prod1";
+    navigateToProduct(productId);
+  });
+});

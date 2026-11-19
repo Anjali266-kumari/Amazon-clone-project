@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Product Details - Amazon</title>
+  <link rel="stylesheet" href="clone.css" />
+  <link rel="stylesheet" href="product-details.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="clone.html" title="Amazon Home">
+      <img
+        src="https://www.shutterstock.com/image-vector/amazon-logo-editorial-icon-isolated-600nw-2333488123.jpg"
+        style="height: auto"
+        width="100"
+        alt="logo"
+      />
+    </a>
+
+    <div class="nav-location">
+      <i class="fa-solid fa-location-dot" style="color: aliceblue"></i>
+      <div>
+        <p>Deliver to</p>
+        <h1>Update location</h1>
+      </div>
+    </div>
+
+    <div class="nav-search">
+      <div class="nav-category">
+        <p>All <i class="fa-solid fa-caret-down"></i></p>
+      </div>
+      <input
+        type="text"
+        class="input"
+        placeholder="Search Amazon"
+        autocomplete="off"
+      />
+      <i class="fa-solid fa-magnifying-glass nav-search-icon"></i>
+    </div>
+
+    <div class="nav-lang">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT_YyCuo6I2MX671acpoIAsXUvdReaugX5Uw&s"
+        width="25px"
+        alt="flag"
+      />
+      <p>EN</p>
+      <i class="fa-solid fa-caret-down"></i>
+    </div>
+    <div class="nav-text">
+      <p>Hello, Sign in</p>
+      <h1>Account & Lists<i class="fa-solid fa-caret-down" width="8px"></i></h1>
+    </div>
+    <div class="nav-text">
+      <p>Returns</p>
+      <h1>& Orders</h1>
+    </div>
+    <div class="nav-cart" id="nav-cart-btn" onclick="location.href='clone.html'">
+      <div class="cart-icon-wrapper">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </div>
+      <p>Cart</p>
+    </div>
+  </nav>
+
+  <!-- Sub Navigation Bar -->
+  <div class="nav-bottom">
+    <a href="clone.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i> Back to All Items
+    </a>
+    <div>
+      <i class="fa-solid fa-bars" width="25px"></i>
+      <p>All</p>
+    </div>
+    <p>Today's Deals</p>
+    <p>Customer Service</p>
+    <p>Registry</p>
+    <p>Gift Cards</p>
+    <p>Sell</p>
+    <p>Amazon Pay</p>
+  </div>
+
+  <!-- Breadcrumbs -->
+  <div class="breadcrumbs-container">
+    <nav class="breadcrumbs" id="breadcrumbs">
+      <a href="clone.html">Home</a>
+      <span class="bc-sep">&rsaquo;</span>
+      <span id="bc-cat">Electronics</span>
+      <span class="bc-sep">&rsaquo;</span>
+      <span id="bc-title" class="bc-current">Product Title</span>
+    </nav>
+  </div>
+
+  <!-- Main Product Detail Page Container -->
+  <main class="product-page-main">
+    <div class="product-detail-grid">
+
+      <!-- Column 1: Image Gallery -->
+      <section class="gallery-column">
+        <div class="sticky-gallery">
+          <div class="main-image-wrap">
+            <span class="detail-badge" id="detail-badge">Amazon's Choice</span>
+            <img id="detail-image" src="" alt="Product image" />
+          </div>
+
+          <div class="gallery-perks">
+            <div class="perk-box">
+              <i class="fa-solid fa-truck-fast"></i>
+              <span>Free Delivery</span>
+            </div>
+            <div class="perk-box">
+              <i class="fa-solid fa-rotate-left"></i>
+              <span>7 Days Replacement</span>
+            </div>
+            <div class="perk-box">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>1 Year Warranty</span>
+            </div>
+            <div class="perk-box">
+              <i class="fa-solid fa-lock"></i>
+              <span>Secure Transaction</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Column 2: Center Details -->
+      <section class="center-details-column">
+        <div class="brand-link" id="detail-brand-wrap">
+          Brand: <a href="javascript:void(0)" id="detail-brand">Brand Name</a>
+        </div>
+        <h1 class="detail-title" id="detail-title">Product Name</h1>
+
+        <div class="detail-rating-row">
+          <div class="stars" id="detail-stars"></div>
+          <span class="rating-val" id="detail-rating-val">4.5</span>
+          <a href="#reviews-section" class="rating-count-link" id="detail-rating-count">1,200 ratings</a>
+          <span class="pipe">|</span>
+          <span class="bought-count" id="detail-bought">1K+ bought in past month</span>
+        </div>
+
+        <hr class="detail-hr" />
+
+        <!-- Price Section -->
+        <div class="detail-price-box">
+          <div class="discount-wrap">
+            <span class="discount-tag" id="detail-discount">-25%</span>
+            <div class="price-wrap">
+              <span class="currency">₹</span>
+              <span class="price-num" id="detail-price">14,999</span>
+            </div>
+          </div>
+          <div class="mrp-row">
+            M.R.P.: <del id="detail-mrp">₹19,999</del>
+          </div>
+          <div class="tax-note">Inclusive of all taxes</div>
+          <div class="emi-note"><strong>EMI</strong> starts at ₹679. No Cost EMI available.</div>
+        </div>
+
+        <hr class="detail-hr" />
+
+        <!-- Special Offers Cards -->
+        <div class="offers-section">
+          <div class="offers-header">
+            <i class="fa-solid fa-tags"></i>
+            <span>Offers</span>
+          </div>
+          <div class="offers-cards-list" id="offers-list">
+            <!-- Injected dynamically -->
+          </div>
+        </div>
+
+        <hr class="detail-hr" />
+
+        <!-- Quick Specs Table -->
+        <div class="specs-preview-table" id="specs-preview">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- About this item -->
+        <div class="about-item-section">
+          <h3>About this item</h3>
+          <ul class="features-list" id="detail-features">
+            <!-- Injected dynamically -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- Column 3: Buy Box / Checkout Box -->
+      <aside class="buybox-column">
+        <div class="buybox-card">
+          <div class="buybox-price">
+            <span class="currency">₹</span>
+            <span class="price-num" id="buybox-price">14,999</span>
+          </div>
+
+          <div class="delivery-info">
+            <a href="javascript:void(0)" class="prime-text"><i class="fa-solid fa-check"></i> prime</a>
+            <p class="delivery-date">FREE delivery <strong id="buybox-delivery">Tomorrow, 8 AM - 12 PM</strong></p>
+            <p class="location-pin"><i class="fa-solid fa-location-dot"></i> Deliver to New Delhi 110001</p>
+          </div>
+
+          <div class="stock-status in-stock" id="buybox-stock">
+            <i class="fa-solid fa-circle-check"></i> In Stock
+          </div>
+
+          <div class="seller-meta">
+            <div class="meta-row"><span>Payment</span> <span>Secure transaction</span></div>
+            <div class="meta-row"><span>Ships from</span> <span>Amazon</span></div>
+            <div class="meta-row"><span>Sold by</span> <span class="seller-name">Appario Retail Private Ltd</span></div>
+          </div>
+
+          <!-- Quantity Selection -->
+          <div class="buybox-qty">
+            <label for="buybox-qty-select">Quantity:</label>
+            <div class="qty-stepper">
+              <button type="button" class="stepper-btn" id="qty-minus-btn">-</button>
+              <span id="qty-display">1</span>
+              <button type="button" class="stepper-btn" id="qty-plus-btn">+</button>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="buybox-buttons">
+            <button class="btn-add-cart" id="btn-add-cart">
+              <i class="fa-solid fa-cart-shopping"></i> Add to Cart
+            </button>
+            <button class="btn-buy-now" id="btn-buy-now">
+              Buy Now
+            </button>
+          </div>
+
+          <div class="wishlist-btn">
+            <button type="button" id="btn-wishlist">
+              <i class="fa-regular fa-heart"></i> Add to Wish List
+            </button>
+          </div>
+
+          <div id="cart-alert" class="cart-alert">
+            <i class="fa-solid fa-circle-check"></i> Added <span id="alert-qty">1</span> item(s) to Cart!
+          </div>
+        </div>
+      </aside>
+
+    </div>
+
+    <!-- Technical Details Section -->
+    <section class="technical-details-section">
+      <h2>Technical Details</h2>
+      <div class="tech-specs-grid" id="tech-specs-table">
+        <!-- Injected dynamically -->
+      </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section class="reviews-section" id="reviews-section">
+      <h2>Customer Reviews</h2>
+      <div class="reviews-layout">
+        <div class="reviews-summary-card">
+          <div class="big-rating">
+            <span class="rating-number" id="review-rating-num">4.5</span>
+            <div class="stars" id="review-stars"></div>
+          </div>
+          <div class="ratings-subtext" id="review-ratings-sub">4.5 out of 5 stars based on 1,200 global ratings</div>
+
+          <div class="rating-bars">
+            <div class="bar-row">
+              <span>5 star</span>
+              <div class="progress-bar"><div class="fill" style="width: 72%"></div></div>
+              <span>72%</span>
+            </div>
+            <div class="bar-row">
+              <span>4 star</span>
+              <div class="progress-bar"><div class="fill" style="width: 18%"></div></div>
+              <span>18%</span>
+            </div>
+            <div class="bar-row">
+              <span>3 star</span>
+              <div class="progress-bar"><div class="fill" style="width: 6%"></div></div>
+              <span>6%</span>
+            </div>
+            <div class="bar-row">
+              <span>2 star</span>
+              <div class="progress-bar"><div class="fill" style="width: 2%"></div></div>
+              <span>2%</span>
+            </div>
+            <div class="bar-row">
+              <span>1 star</span>
+              <div class="progress-bar"><div class="fill" style="width: 2%"></div></div>
+              <span>2%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="customer-reviews-feed">
+          <h3>Top reviews from India</h3>
+          <div class="review-item">
+            <div class="reviewer">
+              <i class="fa-solid fa-circle-user reviewer-icon"></i>
+              <strong>Rohit Sharma</strong>
+              <span class="verified">Verified Purchase</span>
+            </div>
+            <div class="review-stars-row">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <strong>Outstanding quality and fast delivery!</strong>
+            </div>
+            <div class="review-date">Reviewed in India on 12 November 2026</div>
+            <p class="review-body">
+              Exceeded my expectations. Build quality is top-notch, feels very premium, and works flawlessly right out of the box. Highly recommended!
+            </p>
+          </div>
+
+          <div class="review-item">
+            <div class="reviewer">
+              <i class="fa-solid fa-circle-user reviewer-icon"></i>
+              <strong>Pooja Verma</strong>
+              <span class="verified">Verified Purchase</span>
+            </div>
+            <div class="review-stars-row">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+              <strong>Great value for money</strong>
+            </div>
+            <div class="review-date">Reviewed in India on 4 October 2026</div>
+            <p class="review-body">
+              Very happy with the purchase. Excellent packaging by Amazon and delivered right on time. Value for money deal.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="bottom" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">Back to Top</div>
+    <div class="bottom-content">
+      <div class="content">
+        <div class="heading">Get to Know Us</div>
+        <ul>
+          <li>Careers</li>
+          <li>Blog</li>
+          <li>About Amazon</li>
+          <li>Investor Relations</li>
+          <li>Amazon Devices</li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="heading">Make Money with Us</div>
+        <ul>
+          <li>Sell products on Amazon</li>
+          <li>Sell on Amazon Business</li>
+          <li>Become an Affiliate</li>
+          <li>Advertise Your Products</li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="heading">Amazon Payment Products</div>
+        <ul>
+          <li>Amazon Business Card</li>
+          <li>Shop with Points</li>
+          <li>Reload Your Balance</li>
+          <li>Amazon Currency Converter</li>
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="heading">Let Us Help You</div>
+        <ul>
+          <li>Your Account</li>
+          <li>Your Orders</li>
+          <li>Shipping Rates & Policies</li>
+          <li>Returns & Replacements</li>
+          <li>Help</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-copyright">
+      <a href="#">Conditions of Use</a>
+      <a href="#">Privacy Notice</a>
+      <a href="#">Your Ads Privacy Choices</a>
+      <p>© 1996-2026, Amazon.com, Inc. or its affiliates</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="products-data.js"></script>
+  <script src="product-details.js"></script>
+</body>
+</html>
